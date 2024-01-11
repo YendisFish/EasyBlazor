@@ -14,14 +14,16 @@
         </ul>
         break;
     }
+        
     case ListType.Ordered:
     {
-        <ol class="@Class" id="@Id">
+        <ol class="@Class" id="@Id" type="@LabelType">
             @foreach(T item in items)
             {
                 <li class="@ElementClass" id="@ElementId">@child(item)</li>
             }
         </ol>
+
         break;
     }    
 }
