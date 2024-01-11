@@ -1,7 +1,9 @@
 ﻿@inherits StateComponent
 
 <table class="@Class" id="@Id">
-    @foreach(EasyRow row in Rows)
+    @Header
+    
+    @foreach (EasyRow row in Rows)
     {
         @row
     }
