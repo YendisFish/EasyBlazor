@@ -3,14 +3,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace EasyBlazor.Components.Lists;
 
-public partial class EasyList<T> : StateComponent, IEnumerable<T>
+public partial class ComponentList<T> : StateComponent, IEnumerable<T> where T: StateComponent
 {
-    [Parameter] public ListType type { get; set; } = ListType.Ordered;
     [Parameter] public List<T> items { get; set; } = new();
-    [Parameter] public string ElementClass { get; set; } = "";
-    [Parameter] public string ElementId { get; set; } = "";
-    [Parameter] public string LabelType { get; set; } = "";
-    [Parameter] public RenderFragment<T> child { get; set; }
 
     public int Count => items.Count;
     public int Length => items.Count;
@@ -71,29 +66,23 @@ public partial class EasyList<T> : StateComponent, IEnumerable<T>
         this.Update();
     }
     
-    public static EasyList<T> operator +(EasyList<T> list, IEnumerable<T> value)
+    public static ComponentList<T> operator +(ComponentList<T> list, IEnumerable<T> value)
     {
         list.AddRange(value);
         return list;
     }
     
-    public static EasyList<T> operator +(EasyList<T> list, T element)
+    public static ComponentList<T> operator +(ComponentList<T> list, T element)
     {
         list.Add(element);
         list.Update();
         return list;
     }
     
-    public static EasyList<T> operator -(EasyList<T> list, T element)
+    public static ComponentList<T> operator -(ComponentList<T> list, T element)
     {
         list.Remove(element);
         list.Update();
         return list;
-    }
-}
-
-public enum ListType
-{
-    Ordered,
-    Unordered
+    }   
 }
