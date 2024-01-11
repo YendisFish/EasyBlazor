@@ -1,0 +1,25 @@
+﻿@inherits StateComponent
+
+@switch(this.type)
+{
+    case ListType.Unordered:
+    {
+        <ul>
+            @foreach(string item in items)
+            {
+                <li>@item</li>
+            }
+        </ul>
+        break;
+    }
+    case ListType.Ordered:
+    {
+        <ol>
+            @foreach(string item in items)
+            {
+                <li>@item</li>
+            }
+        </ol>
+        break;
+    }    
+}
