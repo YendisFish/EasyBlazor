@@ -77,6 +77,12 @@ public partial class EasyList<T> : StateComponent, IEnumerable<T>
         return list;
     }
     
+    public static EasyList<T> operator +(EasyList<T> list, T element)
+    {
+        list.Add(element);
+        return list;
+    }
+    
     public static EasyList<T> operator -(EasyList<T> list, T element)
     {
         list.Remove(element);
